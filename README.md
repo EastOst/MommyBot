@@ -4,4 +4,4 @@
 
 2024 Computer System Design Basics
 ## System Architecture
-![KakaoTalk_Photo_2024-10-14-17-30-41](Architecture)
+![Architecture](https://github.com/user-attachments/assets/679316ba-3a26-4e55-b924-edcaf4c7127c)

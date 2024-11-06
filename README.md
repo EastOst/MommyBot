@@ -5,4 +5,4 @@
 
 2024 Computer System Design Basics
 ## System Architecture
-![Architecture](https://github.com/user-attachments/assets/679316ba-3a26-4e55-b924-edcaf4c7127c)
+![Architecture](https://github.com/user-attachments/assets/e89311b2-221f-47e8-a62c-e55d84944dc7)

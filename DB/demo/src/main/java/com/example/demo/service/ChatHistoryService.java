@@ -35,10 +35,12 @@ public class ChatHistoryService {
     public ChatHistoryDTO sendUserMessageToAi(Messages messages){
             System.out.println("send ai 이전 서비스계층: "+messages);
             ChatBot chatBot=chatbotRepository.findByStatus(Boolean.TRUE);//수정필요
-            List<ChatHistory> chatHistories=chatHistroyRepository.findAll();//수정필요
+            List<ChatHistory> chatHistories=chatHistroyRepository.findByStatus(Boolean.TRUE);//수정필요
             Messages messages1=messages;
+
             String url="http://localhost:5000/chat";
             HttpHeaders headers = new HttpHeaders();
+
             headers.setContentType(MediaType.APPLICATION_JSON);
 
             ChatRequest chatRequest=new ChatRequest();
@@ -57,6 +59,7 @@ public class ChatHistoryService {
             ChatHistoryDTO chatHistoryDTO=response.getBody();
             return response.getBody();//emotion은 빈상태로 들어온다.
     }
+
 
 
 }

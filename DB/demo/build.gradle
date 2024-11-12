@@ -36,7 +36,9 @@ dependencies {
 
 
 }
-
+bootJar {
+	archivesBaseName = 'my-custom-name'  // 원하는 이름으로 설정
+}
 tasks.named('test') {
 	useJUnitPlatform()
 }

@@ -7,4 +7,5 @@ https://eastost.github.io/ComsTouch/
 
 2024 Computer System Design Basics
 ## System Architecture
-![Architecture]([https://github.com/user-attachments/assets/e89311b2-221f-47e8-a62c-e55d84944dc7](https://github.com/user-attachments/assets/86181a2d-b90b-4428-87e2-1c07f09c76c7))
+![SW아키텍처최종본](https://github.com/user-attachments/assets/86181a2d-b90b-4428-87e2-1c07f09c76c7)
+

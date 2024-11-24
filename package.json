@@ -1,0 +1,14 @@
+{
+  "scripts": {
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "vue-router": "^4.0.13"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-eslint": "~5.0.0",
+    "@vue/cli-service": "^5.0.8",
+    "eslint": "^9.15.0",
+    "eslint-plugin-vue": "^9.31.0"
+  }
+}

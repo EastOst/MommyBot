@@ -60,14 +60,14 @@
     methods: {
       ...mapActions(["setLastName", "setFirstName", "setBirthDate", "setLmsID", "setLmsPassword"]),
       submitAll() {
-        this.setLastName(this.userLastName);
-        this.setFirstName(this.userFirstName);
-        this.setBirthDate(this.userBirthDate);
-        this.setLmsID(this.userLmsID);
-        this.setLmsPassword(this.userLmsPassword);
+  this.$store.commit("updateState", { key: "lastName", value: this.userLastName });
+  this.$store.commit("updateState", { key: "firstName", value: this.userFirstName });
+  this.$store.commit("updateState", { key: "birthDate", value: this.userBirthDate });
+  this.$store.commit("updateState", { key: "lmsID", value: this.userLmsID });
+  this.$store.commit("updateState", { key: "lmsPassword", value: this.userLmsPassword });
   
-        this.$router.push("/");
-      },
+  this.$router.push("/");
+},
       resetFields() {
         this.userLastName = "";
         this.userFirstName = "";

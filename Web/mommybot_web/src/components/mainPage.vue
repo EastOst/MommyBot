@@ -4,21 +4,20 @@
       <h1>{{ greetingMessage }}</h1>
     </div>
     <div id="calendar"></div> <!-- 캘린더 렌더링할 영역 -->
-    <div class="button-group">
-      <button @click="addEvent">일정 추가</button>
-    </div>
-    <button class="settings-button" @click="goToSettings">Go to Settings</button>
+    <button @click="goToSettings">사용자 설정</button>
+    
   </div>
 </template>
 
 <script>
-import { mapState } from "vuex"; 
+import { mapState } from "vuex";
+import { onMounted } from "vue";
 import {
   createCalendar,
   createViewDay,
-  createViewWeek,
-  createViewMonthGrid,
   createViewMonthAgenda,
+  createViewMonthGrid,
+  createViewWeek,
 } from "@schedule-x/calendar";
 import "@schedule-x/theme-default/dist/index.css";
 
@@ -34,37 +33,6 @@ export default {
       const hasJongseong = (code - 44032) % 28 !== 0;
       return hasJongseong ? "아" : "야";
     },
-    addEvent() {
-      // 새로운 이벤트 추가
-      const newEvent = {
-        id: this.events.length + 1,
-        title: `New Event ${this.events.length + 1}`,
-        start: "2024-11-26 14:00",
-        end: "2024-11-26 15:00",
-      };
-
-      // 이벤트 배열 업데이트
-      this.events.push(newEvent);
-
-      // 캘린더를 재렌더링
-      this.renderCalendar();
-    },
-    renderCalendar() {
-      // 기존 캘린더를 제거하고 새로 생성
-      if (this.calendar) {
-        this.calendar.destroy(); // 기존 캘린더 제거 (필요 시)
-      }
-      this.calendar = createCalendar({
-        views: [
-          createViewDay(),
-          createViewWeek(),
-          createViewMonthGrid(),
-          createViewMonthAgenda(),
-        ],
-        events: this.events,
-      });
-      this.calendar.render(document.getElementById("calendar"));
-    },
   },
   computed: {
     ...mapState(["firstName"]),
@@ -72,21 +40,29 @@ export default {
       return `${this.firstName}${this.getPostfix(this.firstName)} 엄마다!`;
     },
   },
-  data() {
-    return {
-      calendar: null, // 캘린더 인스턴스
-      events: [
-        {
-          id: 1,
-          title: "Meeting",
-          start: "2024-11-25 10:00",
-          end: "2024-11-25 11:00",
-        },
-      ],
-    };
-  },
-  mounted() {
-    this.renderCalendar(); // 캘린더 초기 렌더링
+  setup() {
+    // 캘린더 초기화
+    onMounted(() => {
+      const calendar = createCalendar({
+        views: [
+          createViewDay(),
+          createViewWeek(),
+          createViewMonthGrid(),
+          createViewMonthAgenda(),
+        ],
+        events: [
+          {
+            id: 1,
+            title: "시연회",
+            start: "2024-12-05 10:00",
+            end: "2024-12-05 17:00",
+          },
+        ],
+      });
+
+      // 캘린더를 렌더링할 DOM 요소 지정
+      calendar.render(document.getElementById("calendar"));
+    });
   },
 };
 </script>
@@ -103,27 +79,5 @@ export default {
   width: 100%;
   height: 600px;
   margin: 20px auto;
-}
-.button-group {
-  margin-top: 20px;
-}
-button {
-  margin: 0 10px;
-  padding: 10px 20px;
-  font-size: 16px;
-}
-.settings-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-.settings-button:hover {
-  background-color: #0056b3;
 }
 </style>

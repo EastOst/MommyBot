@@ -10,6 +10,7 @@
   "dependencies": {
     "@schedule-x/calendar": "^2.7.0",
     "@schedule-x/theme-default": "^2.7.0",
+    "axios": "^1.7.7",
     "body-parser": "^1.20.3",
     "core-js": "^3.8.3",
     "express": "^4.21.1",
